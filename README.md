@@ -1,7 +1,7 @@
 # sRNA
 # Getting Started
 ### Dependencies:
-- [miRDeep2](https://github.com/rajewsky-lab/mirdeep2)
+- [miRDeep2](https://github.com/rajewsky-lab/mirdeep2) ([paper](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3245920/))
 - [miRDeep2_pipeline workflow](https://github.com/TF-Chan-Lab/miRDeep2_pipeline)
 
 ## Setting up mirdeep2
@@ -28,6 +28,8 @@ awk '/^>/ {print $1} !/^>/ {print}' your_input.fasta > your_output.fasta
 ```
 ### Filtering mature.fa and hairpin.fa files
 mirdeep2.pl needs these files to be inputed with samples from the specific organism being tested. In order to do this the files were obtained from [miRBase](https://mirbase.org/download/) and then filtered specifically for reads associated with Drosophila Melanogaster (dme) using the extract_miRNAs.pl script provided with the program as such:
+
+For the fruit fly analysis, Anopheles gambiae, Anopheles mellifera, Bombyx mori, Locusta migratoria, Triboleum castaneum and all Drosophila species were considered related species.
 ```
 #mature
 extract_miRNAs.pl /path/to/file/mature.fa dme > path/to/file/mature_dmel.fa
@@ -36,5 +38,5 @@ extract_miRNAs.pl /path/to/file/mature.fa dme > path/to/file/mature_dmel.fa
 extract_miRNAs.pl /path/to/file/hairpin.fa dme > path/to/file/hairpin_dmel.fa
 
 #others
-extract_miRNAs.pl /path/to/file/mature.fa dmo,dsi > path/to/file/mature_dmel_others.fa
+extract_miRNAs.pl /path/to/file/mature.fa dmo,dsi,aga,ame,bmo,lmi,tca > /path/to/file/mature_dmel_others.fa
 ```
